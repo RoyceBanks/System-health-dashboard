@@ -1,0 +1,70 @@
+
+from flask import Flask, jsonify, render_template
+import sqlite3
+import plotly.graph_objs as go
+import plotly
+import json
+
+
+app = Flask(__name__)
+DB_FILE = "system_monitor.db"
+
+#---------------------------------
+# Helper function to query DB
+#---------------------------------
+
+def fetch_recent_stats(limit=20):
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute( "SELECT timestamp, cpu_percent, ram_percent, disk_percent, net_sent, net_recv "
+               "FROM system_stats ORDER BY id DESC LIMIT ?", (limit,))
+    rows = c.fetchall()
+    conn.close()
+
+    # Convert to list of dicts for JSON
+    stats = []
+    for row in rows:
+        stats.append({
+            "timestamp": row[0],
+            "cpu_percent": row[1],
+            "ram_percent": row[2],
+            "disk_percent": row[3],
+            "net_sent": row[4],
+            "net_recv": row[5],
+        })
+    return stats[::-1]  # reverse to oldest to newest
+
+#-------------------------------------
+# Routes
+#-------------------------------------
+
+@app.route('/')
+def home():
+    return "<h1>System Monitor API</h1> <p>Use /stats/recent to see data</p>"
+
+@app.route('/stats/recent')
+def recent_stats():
+    data = fetch_recent_stats(limit=20)  # last 20 entries
+    return jsonify(data)
+
+@app.route('/dashboard')
+def dashboard():
+    data = fetch_recent_stats(limit=20)
+    timestamps = [d['timestamp'] for d in data]
+
+    # Create Plotly traces
+    cpu_trace = go.Scatter(x=timestamps, y=[d['cpu_percent'] for d in data], mode='lines+markers', name='CPU')
+    ram_trace = go.Scatter(x=timestamps, y=[d['ram_percent'] for d in data], mode='lines+markers', name='RAM')
+    disk_trace = go.Scatter(x=timestamps, y=[d['disk_percent'] for d in data], mode='lines+markers', name='Disk %')
+
+    traces = [cpu_trace, ram_trace, disk_trace]
+
+    graphJSON = json.dumps(traces, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return render_template('dashboard.html', graphJSON=graphJSON)
+
+#----------------------------------------
+# Run app
+#----------------------------------------
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=5000)
