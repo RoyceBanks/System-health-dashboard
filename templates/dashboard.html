@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8" />
     <title>System Monitor Dashboard</title>
     <meta http-equiv="refresh" content="5">
@@ -20,10 +21,24 @@
         @media (min-width: 1100px) {
             .charts { grid-template-columns: 1fr 1fr; }
         }
+=======
+    <meta charset="utf-8">
+    <title>System Monitor Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta http-equiv="refresh" content="5">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .card { padding: 16px; border: 1px solid #ddd; margin-bottom: 20px; border-radius: 8px; }
+        ul.recs { list-style: none; padding-left: 0; }
+        li.level-ok { background:#e8f5e9; padding:8px; margin:4px; border-radius:4px; }
+        li.level-warn { background:#fff8e1; padding:8px; margin:4px; border-radius:4px; }
+        li.level-crit { background:#ffebee; padding:8px; margin:4px; border-radius:4px; }
+>>>>>>> 50eadb6 (Initial commit fix)
     </style>
 </head>
 <body>
     <h1>System Monitor Dashboard</h1>
+<<<<<<< HEAD
     <div class="subtle">Auto-refreshing every 5s • Latest samples shown</div>
 
     <div class="wrap">
@@ -70,5 +85,36 @@
         Plotly.newPlot('chart_usage', usageTraces, usageLayout);
         Plotly.newPlot('chart_net', netTraces, netLayout);
     </script>
+=======
+
+    <div class="card">
+        <h2>CPU / RAM / Disk Usage</h2>
+        <div id="chart_usage"></div>
+        <script>
+            var traces = {{ usageJSON | safe }};
+            var layout = {title:'CPU / RAM / Disk Usage', xaxis:{title:'Timestamp'}, yaxis:{title:'%', range:[0,100]}};
+            Plotly.newPlot('chart_usage', traces, layout);
+        </script>
+    </div>
+
+    <div class="card">
+        <h2>Network Activity (MB)</h2>
+        <div id="chart_net"></div>
+        <script>
+            var netTraces = {{ netJSON | safe }};
+            var netLayout = {title:'Network Upload/Download', barmode:'group', xaxis:{title:'Timestamp'}, yaxis:{title:'MB'}};
+            Plotly.newPlot('chart_net', netTraces, netLayout);
+        </script>
+    </div>
+
+    <div class="card">
+        <h2>Recommendations</h2>
+        <ul class="recs">
+            {% for r in recommendations %}
+                <li class="level-{{ r.level }}">{{ r.message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+>>>>>>> 50eadb6 (Initial commit fix)
 </body>
 </html>
