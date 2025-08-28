@@ -48,12 +48,12 @@ Dependencies can be installed via pip install -r requirements.txt.
 ⸻
 
 ⚡ One-Click Setup & Run
-	1.	Clone the repository and navigate into the folder.
-	2.	Create and activate a Python virtual environment.
-	3.	Install dependencies using requirements.txt.
-	4.	Start the system collector to log real-time stats (keep this terminal open).
-	5.	Launch the Flask dashboard in a separate terminal.
-	6.	Open your browser and go to http://localhost:5000/dashboard.
+<p>1.	Clone the repository and navigate into the folder.
+<p>2.	Create and activate a Python virtual environment.
+<p>3.	Install dependencies using requirements.txt.
+<p>4.	Start the system collector to log real-time stats (keep this terminal open).
+<p>5.	Launch the Flask dashboard in a separate terminal.
+<p>6.	Open your browser and go to http://localhost:5000/dashboard.
 
 The dashboard auto-refreshes every 5 seconds. Test data will display if the database is empty.
 
