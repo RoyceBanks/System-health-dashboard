@@ -8,42 +8,42 @@ The System Health Dashboard allows users to monitor CPU, RAM, Disk, and Network 
 
 🚀 Project Overview
 
-This dashboard is ideal for system administrators, IT monitoring, or personal projects. It provides:
-	•	Live system metrics: CPU, RAM, Disk, Network usage
-	•	Actionable recommendations with severity levels (OK / Warning / Critical)
-	•	Auto-refreshing dashboard to monitor system health continuously
-	•	Historical data storage using SQLite
-	•	Test data support for immediate visualization
+<p>This dashboard is ideal for system administrators, IT monitoring, or personal projects. It provides:
+<p>	•	Live system metrics: CPU, RAM, Disk, Network usage
+<p>	•	Actionable recommendations with severity levels (OK / Warning / Critical)
+<p>	•	Auto-refreshing dashboard to monitor system health continuously
+<p>	•	Historical data storage using SQLite
+<p>	•	Test data support for immediate visualization
 
 ⸻
 
 ✨ Key Features
-	•	Interactive charts for CPU, RAM, and Disk usage
-	•	Network Upload/Download tracking
-	•	AI-style actionable recommendations with color-coded severity
-	•	Auto-refresh every 5 seconds
-	•	Lightweight SQLite database storing historical metrics
-	•	Test data display if no metrics are yet recorded
+<p>	•	Interactive charts for CPU, RAM, and Disk usage
+<p>	•	Network Upload/Download tracking
+<p>	•	AI-style actionable recommendations with color-coded severity
+<p>	•	Auto-refresh every 5 seconds
+<p>	•	Lightweight SQLite database storing historical metrics
+<p>	•	Test data display if no metrics are yet recorded
 
 
 Project Structure
 
 system-health-dashboard/
-├── app.py                  # Flask web application
-├── system_collector.py     # Logs system stats into SQLite DB
-├── system_monitor.db       # SQLite database (auto-created)
-├── templates/
-│     └── dashboard.html    # HTML template for the dashboard
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
+<p>├── app.py                  # Flask web application
+<p>├── system_collector.py     # Logs system stats into SQLite DB
+<p>├── system_monitor.db       # SQLite database (auto-created)
+<p>├── templates/
+<p>│     └── dashboard.html    # HTML template for the dashboard
+<p>├── requirements.txt        # Python dependencies
+<p>└── README.md               # Project documentation
 
-⚙️ Dependencies
-	•	Python 3.7+
-	•	Flask >=2.3.2
-	•	Plotly >=5.16.0
-	•	psutil >=5.9.5
+⚙️ Dependencies <p>
+	•	Python 3.7+<p>
+	•	Flask >=2.3.2<p>
+	•	Plotly >=5.16.0<p>
+	•	psutil >=5.9.5<p>
 
-Dependencies can be installed via pip install -r requirements.txt.
+Dependencies can be installed via pip install -r requirements.txt.<p>
 
 ⸻
 
@@ -60,34 +60,34 @@ The dashboard auto-refreshes every 5 seconds. Test data will display if the data
 ⸻
 
 📊 Usage Highlights
-	•	Monitor real-time system metrics with interactive charts
-	•	Review AI-style alerts for warnings or critical issues
-	•	Track historical system performance over time
-	•	Works immediately with test data if database is empty
+<p>	•	Monitor real-time system metrics with interactive charts
+<p>	•	Review AI-style alerts for warnings or critical issues
+<p>	•	Track historical system performance over time
+<p>	•	Works immediately with test data if database is empty
 
 ⸻
 
 🎨 Visual Presentation
 
 (Add screenshots or GIFs of the dashboard here for portfolio showcase)
-	•	Top: CPU, RAM, and Disk line charts
-	•	Middle: Network Upload/Download charts
-	•	Bottom: AI-style recommendations with severity color codes
+<p>	•	Top: CPU, RAM, and Disk line charts
+<p>	•	Middle: Network Upload/Download charts
+<p>	•	Bottom: AI-style recommendations with severity color codes
 
 ⸻
 
 🔮 Future Enhancements
-	•	Secure dashboard with user authentication
-	•	Automated alerts via Email or Slack for critical thresholds
-	•	Generate weekly or monthly performance reports
-	•	Docker containerization for simplified deployment
-	•	UI improvements: dark mode, responsive design, customizable charts
+<p>	•	Secure dashboard with user authentication
+<p>	•	Automated alerts via Email or Slack for critical thresholds
+<p>	•	Generate weekly or monthly performance reports
+<p>	•	Docker containerization for simplified deployment
+<p>	•	UI improvements: dark mode, responsive design, customizable charts
 
 ⸻
 
 🛠 Technologies Used
-	•	Python 3.7+
-	•	Flask
-	•	Plotly
-	•	SQLite
-	•	psutil
+<p>	•	Python 3.7+
+<p>	•	Flask
+<p>	•	Plotly
+<p>	•	SQLite
+<p>	•	psutil
